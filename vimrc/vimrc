@@ -1,21 +1,33 @@
 "pathogen 插件开启
 execute pathogen#infect()
-"let NERDTreeWinWidth=170
 "====================laststatus 设置
-"将状态行显示在窗口底部倒数第二行
 set laststatus=2
-"当前文件名，文件格式(DOS, Unix)，文件类型 (XHTML)，当前位置和文件总行数。
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-"set statusline=%F\ "\  "
-"================================
 "=======================================快捷键设置
-"nnoremap <c-s> :w<CR>   
-"<CR>表示不需要回车确认
 map b  :bn<CR>
 map p  :bp<CR>
-vmap {  VdO{}<Esc>kpkddk=%
+map w  w
+map d  :bdelete<CR>
+map 1  :buffer 1<CR>
+map 2  :buffer 2<CR>
+map 3  :buffer 3<CR>
+map 4  :buffer 4<CR>
+map 5  :buffer 5<CR>
+map 6  :buffer 6<CR>
+map 7  :buffer 7<CR>
+map 8  :buffer 8<CR>
+map f  :bfirst<CR>
+map l  :blast<CR>
+map >  4>
+map <  4<
+map -  4-
+map =  4+
+map q  q
+map s  :split<CR>
+map v  :vsplit<CR>
+nmap a ggVG
+cmap a" let @a=@"
 "==========================================================O
-"设置缩进
+set showcmd
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -28,104 +40,12 @@ endif
 "检测文件类型
 filetype off
 set number  
-"===============================有关Vundle的配置
-filetype off
-set nocompatible
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe' 
-""强大的自动补全，谁用谁知道
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-"漂亮的状态栏
-Bundle 'terryma/vim-multiple-cursors'
-""多光标同时编辑
-Bundle 'luochen1990/rainbow'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'Lokaltog/vim-easymotion'
-"强大的搜索定位
-Bundle 'winmanager' 
-"窗口管理
-Bundle 'a.vim'
-"cpp 和 hpp之间跳转
-"Bundle 'flazz/vim-colorschemes'
-"Bundle 'Chiel92/vim-autoformat'
-"Bundle 'minibufexpl.vim' 
-""buffer管理
-"Bundle 'comments.vim' 
-""快速注释
-"Bundle 'kien/ctrlp.vim' 
-""强大的文件搜索
-"Bundle 'godlygeek/tabular' 
-""快速对齐
-"Bundle 'tpope/vim-haml' 
-""sass scss haml等css开发语言支持
-"Bundle 'genoma/vim-less' 
-"less支持css扩充
-"Bundle 'Raimondi/delimitMate' 
-""自动补全引号 括号等
-"Bundle 'hail2u/vim-css3-syntax' 
-""css3语法高亮
-"Bundle 'othree/html5.vim' 
-""html5标签支持
-"Bundle 'docunext/closetag.vim' 
-""html xml自动闭合标签
-"Bundle 'gregsexton/MatchTag' 
-"自动高亮匹配标签
-"Bundle 'terryma/vim-expand-region' 
-""自动选择括号等符号中的内容
-"Bundle 'tpope/vim-surround' 
-""符号自动环绕
-"Bundle 'tpope/vim-repeat' 
-""更为强大的重做功能
-"Bundle 'bronson/vim-trailing-whitespace' 
-""显示以及去除行尾空格
-"Bundle 'SirVer/ultisnips' 
-""代码片段补全
-"Bundle 'honza/vim-snippets' 
-""内置了一堆语言的自动补全片段
-"Bundle 'rstacruz/vim-ultisnips-css' 
-""css的补全
-"Bundle 'tacahiroy/ctrlp-funky' 
-""基于ctrlp的搜索函数等变量名
-"Bundle 'dyng/ctrlsf.vim' 
-""基于ctrlp的文件内容搜索，配合vim－multiple－cursors可以很方便一次修改多个文件的内容
-"Bundle 'pangloss/vim-javascript'
-""更好的js语法 锁进支持
-"Bundle 'othree/yajs.vim' 
-""更好的js语法高亮
-"Bundle 'othree/javascript-libraries-syntax.vim' 
-""js各类框架 库的高亮支持
-"Bundle 'maksimr/vim-jsbeautify' 
-""格式化js css等
-"Bundle 'marijnh/tern_for_vim' 
-"牛逼的基于语法分析的补全
-"Bundle 'mbriggs/mark.vim' 
-"标记高亮
-"Bundle 'gorodinskiy/vim-coloresque' 
-""颜色符号显示对应颜色
-"Bundle 'scrooloose/nerdtree' 
-""文件树浏览
-"Bundle 'Xuyuanp/nerdtree-git-plugin' 
-""git支持
-"Bundle 'majutsushi/tagbar' 
-""ctags标签提取显示
-"================================
-"=======================================rainbow
-let g:rainbow_active = 1 
-"0 if you want to enable it later via :RainbowToggle"
-"=========================================
-
 "针对不同的文件类型采用不同的缩进格式
 filetype indent on
 "允许插件
 filetype plugin on
 "启动自动补全
 filetype plugin indent on
-
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 set t_ti= t_te=
 " 取消换行。
@@ -141,32 +61,24 @@ set hlsearch
 set incsearch
 " 有一个或以上大写字母时仍大小写敏感
 set smartcase
-"在状态栏显示正在输入的命令
-set showcmd
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set helplang=cn
+"===============================有关Vundle的配置
+set nocompatible
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+"=======================================rainbow
+let g:rainbow_active = 1 
 "======================================================superTab
 "let g:SuperTabDefaultCompletionType="context" 
 let g:SuperTabRetainCompletionType=1
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 "================================================syntastic 配置
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_c_checkers=['make']
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-set statusline+=%*gbar
 "======================================================
 "==========================================================设置默认添加代码
-autocmd BufNewFile *.py,*.c,*.sh,*.java,*.php,*.html exec ":call SetTitle()"  
-"新建.py,.cc,.java,.sh,  
-"定义函数SetTitle，自动插入文件头  
+autocmd BufNewFile *.py,*.c,*.sh,*.java,*.php,*.html,*.cpp,*.h exec ":call SetTitle()"  
 func SetTitle()  
 	
 	if expand("%:e") == 'cpp'  
@@ -175,10 +87,11 @@ func SetTitle()
 		call setline(3,"using namespace std;")  
 		call setline(4,"")  
 		call setline(5,"int main()")
-		call setline(6,"cout <<\"Hello world!\" << endl;");
-		call setline(7,"");
-		call setline(8,"	return 0;");
-		call setline(9,"}");
+		call setline(6,"{")
+		call setline(7,"	cout <<\"Hello world!\" << endl;")
+		call setline(8,"")
+		call setline(9,"	return 0;")
+		call setline(10,"}")
 	endif  
 
 	if expand("%:e") == 'c'
@@ -234,18 +147,6 @@ func SetTitle()
 	endif
 
 endfunc  
-inoremap <C-1> zfap
-"================================================================
-"==============================================================omminfunc
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType sh set omnifunc=shcomplete#Complete
-"================================================================
 "=============================================youcompleteme
 set completeopt=longest,menu	"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif	"离开插入模式后自动关闭预览窗口
@@ -289,44 +190,13 @@ let g:ycm_key_list_select_completion = ['<c-n>','<Down>']
 let g:ycm_key_list_previous_completion = ['<c-p>','<Up>']
 " 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
 "let g:ycm_key_invoke_completion = '<M-;>'
-
-"============================================================
 "==================================================UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-e>"
-"定义存放代码片段的文件夹，使用自定义和默认的，将会的到全局，有冲突的会提示
-"let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips"]
-"function! g:UltiSnips_Complete()
-	"call UltiSnips#ExpandSnippet()
-	"if g:ulti_expand_res == 0
-	"if pumvisible()
-	"return "\<C-n>"
-	"else
-	"call UltiSnips#JumpForwards()
-	"if g:ulti_jump_forwards_res == 0
-	"return "\<TAB>"
-	"endif
-	"endif
-	"endif
-	"return ""
-"endfunction
-"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
-"Expand snippet or return
-"let g:ulti_expand_res = 1
-"function! Ulti_ExpandOrEnter()
-	"call UltiSnips#ExpandSnippet()
-	"if g:ulti_expand_res
-	"return ''
-	"else
-	"return "\<return>"
-"endfunction
-"Set <space> as primary trigger
-"inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>"
-"==========================================================================
 "===============================================折叠保存设置
 "au BufWinLeave  * silent mkview
 "au BufWinEnter  * silent loadview
 "----------------------------------------------------
+set showcmd
